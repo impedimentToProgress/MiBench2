@@ -11,15 +11,19 @@ Whatever toolchain you go with, update the paths and commands in the global [mak
 
 ### Building
 
-   `cd` to the appropriate benchmark directory.
-   `make`
+`cd` to the appropriate benchmark directory.
+
+`make`
+
 
 Running `make` produces several usefull files:
    `main.elf` an ELF executable suitable for loading to a board or simulator using GDB
    `main.bin` a raw binary suitable for loading directly in to the memory of a board or a simulator
    `main.lst` assembly listing
-   
+
+
 Running `make clean` will remove all files produced during compilation.
+
 
 To build all benchmarks and move the resulting bin files to the repo's top level directory, run [buildAll.sh](buildAll.sh).
 
