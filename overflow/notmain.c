@@ -1,4 +1,4 @@
-
+#include "../bareBench.h"
 
 unsigned int atest ( unsigned int, unsigned int );
 unsigned int stest ( unsigned int, unsigned int );

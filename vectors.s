@@ -24,26 +24,79 @@ stack). After this the stack is misaligned by 4.
 .word   _stacktop   /* stack top address */
 .word   _start      /* 1 Reset */
 .word   hang        /* 2 NMI */
-.word   hang        /* 3 HardFault */
-.word   hang        /* 4 MemManage */
-.word   hang        /* 5 BusFault */
-.word   hang        /* 6 UsageFault */
-.word   hang        /* 7 RESERVED */
-.word   hang        /* 8 RESERVED */
-.word   hang        /* 9 RESERVED*/
-.word   hang        /* 10 RESERVED */
-.word   hang        /* 11 SVCall */
-.word   hang        /* 12 Debug Monitor */
-.word   hang        /* 13 RESERVED */
-.word   hang        /* 14 PendSV */
-.word   hang        /* 15 SysTick */
-.word   hang        /* 16 External Interrupt(0) */
-.word   hang        /* 17 External Interrupt(1) */
-.word   hang        /* 18 External Interrupt(2) */
-.word   hang        /* 19 ...   */
+.word   hang1        /* 3 HardFault */
+.word   hang2        /* 4 MemManage */
+.word   hang3        /* 5 BusFault */
+.word   hang4        /* 6 UsageFault */
+.word   hang5        /* 7 RESERVED */
+.word   hang6        /* 8 RESERVED */
+.word   hang7        /* 9 RESERVED*/
+.word   hang8        /* 10 RESERVED */
+.word   hang9        /* 11 SVCall */
+.word   hang10        /* 12 Debug Monitor */
+.word   hang11        /* 13 RESERVED */
+.word   hang12        /* 14 PendSV */
+.word   hang13        /* 15 SysTick */
+.word   hang14        /* 16 External Interrupt(0) */
+.word   hang15        /* 17 External Interrupt(1) */
+.word   hang16        /* 18 External Interrupt(2) */
+.word   hang17        /* 19 ...   */
 
 .thumb_func
 hang:   b .
+
+.thumb_func
+hang1:   b .
+
+.thumb_func
+hang2:   b .
+
+.thumb_func
+hang3:   b .
+
+.thumb_func
+hang4:   b .
+
+.thumb_func
+hang5:   b .
+
+.thumb_func
+hang6:   b .
+
+.thumb_func
+hang7:   b .
+
+.thumb_func
+hang8:   b .
+
+.thumb_func
+hang9:   b .
+
+.thumb_func
+hang10:   b .
+
+.thumb_func
+hang11:   b .
+
+.thumb_func
+hang12:   b .
+
+.thumb_func
+hang13:   b .
+
+.thumb_func
+hang14:   b .
+
+.thumb_func
+hang15:   b .
+
+.thumb_func
+hang16:   b .
+
+.thumb_func
+hang17:   b .
+
+
 
 .thumb_func
 .global _start

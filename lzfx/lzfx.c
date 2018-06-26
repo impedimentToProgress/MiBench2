@@ -35,7 +35,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+#include "../bareBench.h"
 #include "twain.h"
 
 #include "lzfx.h"

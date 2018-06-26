@@ -37,4 +37,10 @@ To build all benchmarks and move the resulting bin files to the repo's top-level
 
 [supportFuncs.c](supportFuncs.c) contains functions needed to port newlib to our target platform.
 
+### Statically Allocated
+
+Benchmark susan: Statically Allocated for this specific data set.
+
+Benchmark fft: Statically Allocated for this specific data set.
+
 

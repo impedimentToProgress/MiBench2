@@ -914,4 +914,4 @@ unsigned char test_data[]=
   0x21,0x21,0x23,0x24,
 };
 
-unsigned char * fakeFile = test_data;
+//unsigned char * fakeFile = test_data;

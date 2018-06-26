@@ -1,6 +1,6 @@
 #ifdef BARE_METAL
 
-#include <stdio.h>
+//#include <stdio.h>
 int benchmark();
 
 #define RUNS 1
@@ -14,15 +14,17 @@ int main(void)
   //benchmark();
   for(run = 0; run < RUNS; ++run)
   {
-    printf("Run %d\n\r", run+1);
+    //puts("Trial\n\r");
+    //printf("Run %d\n\r", run+1);
     benchmark();
   }
 
   return 0;
 }
 
-//#define printf(...)
-//#define fprintf(...)
+#define printf(...)
+#define fprintf(...)
+#define fflush(...)
 #define main(...) benchmark(__VA_ARGS__)
 
 #endif

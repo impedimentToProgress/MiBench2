@@ -24,6 +24,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "../bareBench.h"
 #include <math.h>
 // #include <signal.h>
 #include <stdio.h>

@@ -1,5 +1,4 @@
 
-
 void PUT32 ( unsigned int, unsigned int);
 
 #define THUL_UART_BASE 0xE0000000

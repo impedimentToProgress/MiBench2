@@ -7,17 +7,22 @@
 int invfft=0;
 unsigned MAXSIZE; // small 4096, 8192 inverse, 512 for memory-limited systems
 unsigned MAXWAVES=4; //large has 8
+static float realin[1024];
+static float imagin[1024];
+static float realout[1024];
+static float imagout[1024];
+static float Coeff[16];
+static float Amp[16];
 
 int old_main();
     
 // main for benchmark purposes that does fft and inverse fft
 int main() {
-    MAXSIZE = 1024;
+    MAXSIZE = 128;
     old_main();
     invfft = 1;
-    MAXSIZE = 2048;
+    MAXSIZE = 256;
     old_main();
-    
     return 0;
 }
 
@@ -33,12 +38,21 @@ int old_main() {
 		
  srand(1);
 
- RealIn=(float*)malloc(sizeof(float)*MAXSIZE);
+/* RealIn=(float*)malloc(sizeof(float)*MAXSIZE);
  ImagIn=(float*)malloc(sizeof(float)*MAXSIZE);
  RealOut=(float*)malloc(sizeof(float)*MAXSIZE);
  ImagOut=(float*)malloc(sizeof(float)*MAXSIZE);
  coeff=(float*)malloc(sizeof(float)*MAXWAVES);
  amp=(float*)malloc(sizeof(float)*MAXWAVES);
+*/
+
+ //Statically allocate
+	RealIn = realin;
+	ImagIn = imagin;
+	RealOut = realout;
+	ImagOut = imagout;
+	coeff = Coeff;
+	amp = Amp;
 
  /* Makes MAXWAVES waves of random amplitude and period */
 	for(i=0;i<MAXWAVES;i++) 
@@ -78,13 +92,13 @@ printf("ImagOut:\n");
    printf("%f \t", ImagOut[i]);
    printf("\n");
 
- free(RealIn);
+/* free(RealIn);
  free(ImagIn);
  free(RealOut);
  free(ImagOut);
  free(coeff);
  free(amp);
- return 0;
+*/ return 0;
 
 
 }
