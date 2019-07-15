@@ -40,8 +40,9 @@
  *   <will output n and e>
 */   
 #define KEYLEN 4
+#define EXPLEN 2
 uint16_t n[KEYLEN];
-uint16_t e[2];
+uint16_t e[EXPLEN];
 uint16_t plaintext[KEYLEN];
 uint16_t ciphertext[KEYLEN];
 
@@ -637,7 +638,7 @@ void mod_exp(uint16_t * A, uint16_t * g, uint16_t * e, uint16_t e_length,
 }
 
 void test_rsa_encrypt(){
-    mod_exp(ciphertext, plaintext, e, 1, n, KEYLEN);
+    mod_exp(ciphertext, plaintext, e, EXPLEN, n, KEYLEN);
 }
 
 int main (void) {
