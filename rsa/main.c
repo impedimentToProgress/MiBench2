@@ -47,12 +47,12 @@ uint16_t plaintext[KEYLEN];
 uint16_t ciphertext[KEYLEN];
 
 /* would be nice if we could use malloc instead of globals here */
-uint16_t _tmpglobal_ab[2*KEYLEN];
+uint16_t _tmpglobal_ab[2*KEYLEN+1];
 uint16_t _tmpglobal_q[KEYLEN];
-uint16_t _tmpglobal_x[2*KEYLEN];
-uint16_t _tmpglobal_ybnt[2*KEYLEN];
-uint16_t _tmpglobal_ybit[2*KEYLEN];
-uint16_t _tmpglobal_qitybit[2*KEYLEN];
+uint16_t _tmpglobal_x[2*KEYLEN+1];
+uint16_t _tmpglobal_ybnt[2*KEYLEN+1];
+uint16_t _tmpglobal_ybit[2*KEYLEN+1];
+uint16_t _tmpglobal_qitybit[2*KEYLEN+1];
 uint16_t _tmpglobal_temp[KEYLEN];
 
 /**
