@@ -21,8 +21,20 @@ struct _QITEM
 };
 typedef struct _QITEM QITEM;
 
-QITEM allocated[100];
+/*
+ * Dijkstra's algorithm calculates the shortest path between two nodes
+ * by calculating the shortest path from 1 node to all the other nodes.
+ * At the Nth step, the algorithm "visits" the closest node to
+ * any of the N already visited nodes.
+ * Then, the algorithm checks the (NUM_NODES - N) unvisited nodes and
+ * adds a node to the queue if a shorter path to that node is found.
+ * Thus, the maximum number of nodes that could be added to the queue is
+ * NUM_NODES + (NUM_NODES - 1) + ... + 2 + 1 ~= (NUM_NODES * NUM_NODES / 2)
+ */
+#define ARRAY_SIZE (NUM_NODES * NUM_NODES / 2)
+QITEM allocated[ARRAY_SIZE];
 QITEM *qHead = NULL;
+int notAll = 0;
 
 int g_qCount = 0;
 NODE rgnNodes[NUM_NODES];
@@ -43,12 +55,11 @@ void print_path (NODE *rgnNodes, int chNode)
 
 void enqueue (int iNode, int iDist, int iPrev)
 {
-  static int notAll = 0;
   QITEM *qNew = &allocated[notAll];
   notAll++;
   QITEM *qLast = qHead;
   
-  if (!qNew) 
+  if (notAll >= ARRAY_SIZE) 
     {
       //printf("Out of memory.\n");
       exit(1);
@@ -96,7 +107,7 @@ int qcount (void)
 
 int dijkstra(int chStart, int chEnd) 
 {
-  
+  notAll = 0;
 
   for (ch = 0; ch < NUM_NODES; ch++)
     {
