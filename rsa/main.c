@@ -643,6 +643,8 @@ void test_rsa_encrypt(){
 
 int main (void) {
     /* see above comment about generating these */
+    uint16_t correct[KEYLEN];
+
     n[0] = 0xab78; n[1] = 0xafba; n[2] = 0x88e7; n[3] = 0x496d;
     e[0] = 0x0001; e[1] = 0x0001; // e = 65537
 
@@ -650,6 +652,16 @@ int main (void) {
     plaintext[1] = 0x6d65; // me
     plaintext[2] = 0x6e74; // nt
     plaintext[3] = 0x6f73; // os
+
+    /*
+     * 0x6f736e746d654d65^0x10001
+     * mod 0x496d88e7afbaab78
+     * = 0x1b3b820edcb4827d
+     */
+    correct[0] = 0x827d;
+    correct[1] = 0xdcb4;
+    correct[2] = 0x820e;
+    correct[3] = 0x1b3b;
 
     int cnt;
     printf("Plaintext:\n\r");
@@ -664,3 +676,9 @@ int main (void) {
 
     return 11;
 }
+    for(cnt = 0; cnt < KEYLEN; ++cnt) {
+        if (ciphertext[cnt] != correct[cnt]) {
+            test_error("Incorrect ciphertext\n");
+        }
+    }
+
