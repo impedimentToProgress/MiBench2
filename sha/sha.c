@@ -191,14 +191,16 @@ void sha_final(SHA_INFO *sha_info)
 void sha_stream(SHA_INFO *sha_info, char *fin)
 {
     int i = 0;
-    BYTE data[BLOCK_SIZE];
 
     sha_init(sha_info);
     
-    while((data[0] = fin[i]) != '\0')
-    {
-      sha_update(sha_info, data, 1);
-      ++i;
+    while(*fin != '\0') {
+	i = 0;
+	while(fin[i] != '\0' && i < BLOCK_SIZE) {
+	    ++i;
+	}
+	sha_update(sha_info, fin, i);
+	fin += i;
     }
     sha_final(sha_info);
 }
