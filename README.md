@@ -1,46 +1,8 @@
-# MiBench2
-[MiBench](http://vhosts.eecs.umich.edu/mibench/) ported for IoT devices.
+# MiBench2 is deprecated use UlSWaP-Bench
 
-All benchmarks include [barebench.h](barebench.h).  This file contains the `main()` used in building every benchmark and determines the number of benchmark trials and what happens when a benchmark attempts to print to the screen.
+[UlSWaP-Bench](https://github.com/FoRTE-Research/UlSWaP-Bench) is the next iteration of benchmarks targeting ultra-low size, weight, and power devices. It takes the improvements of MiBench2 over [MiBench](http://vhosts.eecs.umich.edu/mibench/), cleans everything up, simplifies the build environment, adjusts input sizes to work on memory-limited devices, adds self-check functionality for each benchmark, and adds builds for RISC-V, ARM, and MSP430 architectures. UlSWaP-Bench has been verified both on real devices and on existing ISA simulators.
 
-### Prerequisites
+If you want to use MiBench or MiBench2 or have used them in the past, we encourage you to explore [UlSWaP-Bench](https://github.com/FoRTE-Research/UlSWaP-Bench). If you do use UlSWaP-Bench or MiBench2 going forward, please cite the UlSWaP-Bench paper:
 
-You will need a cross-compiler for your target platform. The default target is the ARM-Cortex-M0+.  The easiest way to get a working cross-compiler for the Cortex-M0+ is to download the prebuilt binaries from [Launchpad.net](https://launchpad.net/gcc-arm-embedded).
-
-Whatever toolchain you go with, update the paths and commands in the global [make file](Makefile.mk).
-
-### Building
-
-`cd` to the appropriate benchmark directory.
-
-`make`
-
-
-Running `make` produces several useful files:
-   `main.elf` an ELF executable suitable for loading to a board or simulator using GDB
-   `main.bin` a raw binary suitable for loading directly in to the memory of a board or a simulator
-   `main.lst` assembly listing
-
-
-Running `make clean` will remove all files produced during compilation.
-
-
-To build all benchmarks and move the resulting bin files to the repo's top-level directory, run [buildAll.sh](buildAll.sh).
-
-### Porting
-
-[memmap](memmap) contains the memory map used by the linker to place program sections.  Edit this file to change the size of memory or the location/size of individual program sections (e.g., stack and heap).
-
-[vectors.s](vectors.s) contains the exception jump table and the execution entry point `_start` and exit point `exit`.  You may need to edit this file if you target a different instruction set than the ARMv6-M.
-
-[putget.s](putget.s) contains low level functions written in assembly.  Edit the `putchar` function in this file to change the behavior of all C-level printing operations.
-
-[supportFuncs.c](supportFuncs.c) contains functions needed to port newlib to our target platform.
-
-### Statically Allocated
-
-Benchmark susan: Statically Allocated for this specific data set.
-
-Benchmark fft: Statically Allocated for this specific data set.
-
-
+UlSWaP Bench: A Benchmark Suite for Ultra-Low Size, Weight and Power Devices
+Daniel Chiba, Harrison Williams, and Matthew Hicks.
